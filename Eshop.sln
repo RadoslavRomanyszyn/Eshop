@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution", "solution", "{02
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eshop.Domain", "Eshop.Domain\Eshop.Domain.csproj", "{20132AC0-3DD3-466A-BBBB-DF91445453A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eshop.WebApi", "Eshop.WebApi\Eshop.WebApi.csproj", "{F5CE1979-963C-4B65-B518-6D1655B00687}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{20132AC0-3DD3-466A-BBBB-DF91445453A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20132AC0-3DD3-466A-BBBB-DF91445453A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20132AC0-3DD3-466A-BBBB-DF91445453A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5CE1979-963C-4B65-B518-6D1655B00687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5CE1979-963C-4B65-B518-6D1655B00687}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5CE1979-963C-4B65-B518-6D1655B00687}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5CE1979-963C-4B65-B518-6D1655B00687}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
