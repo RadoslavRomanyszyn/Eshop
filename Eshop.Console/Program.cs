@@ -7,7 +7,19 @@ var products = new List<Product>
     new Product(3, "Keyboard Genius OP", "Your keys to success", 20.00m)
 };
 
+var categories = new List<Category>
+{
+    new Category(1, "Notebooks", "Lorem ipsum"),
+    new Category(2, "Keyboards", "Lorem ipsum"),
+    new Category(3, "Mice", "Lorem ipsum")
+};
+
 foreach (var product in products)
 {
     Console.WriteLine($"{product.Title} . {product.Description} . {product.Price}");
+}
+
+foreach (var category in categories)
+{
+    Console.WriteLine($"{category.Title} . {category.Description}");
 }
