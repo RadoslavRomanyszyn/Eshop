@@ -6,7 +6,7 @@
         {
             if (id < 0)
             {
-                throw new ArgumentNullException("id");
+                throw new ArgumentOutOfRangeException("id");
             }
 
             ValidateParameters(title, description);
@@ -30,14 +30,24 @@
 
         private static void ValidateParameters(string title, string description)
         {
-            if (string.IsNullOrEmpty(title) || title.Length > 50)
+            if (string.IsNullOrEmpty(title))
             {
                 throw new ArgumentNullException("title");
             }
 
-            if (string.IsNullOrEmpty(description) || description.Length > 500)
+            if (title.Length > 50)
+            {
+                throw new ArgumentOutOfRangeException("title");
+            }
+
+            if (string.IsNullOrEmpty(description))
             {
                 throw new ArgumentNullException("description");
+            }
+
+            if (description.Length > 500)
+            {
+                throw new ArgumentOutOfRangeException("description");
             }
         }
     }
