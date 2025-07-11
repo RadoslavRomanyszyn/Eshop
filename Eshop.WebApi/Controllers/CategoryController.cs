@@ -7,7 +7,7 @@ namespace Eshop.WebApi.Controllers
     [Route("[controller]")]
     public class CategoryController : ControllerBase
     {
-        private static List<Category> Categories = new List<Category>
+        public static List<Category> Categories = new List<Category>
         {
             new Category(1, "Notebooks", "Lorem ipsum"),
             new Category(2, "Keyboards", "Lorem ipsum"),
