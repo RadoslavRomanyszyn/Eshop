@@ -1,4 +1,5 @@
 ﻿using Eshop.Domain;
+using Eshop.Persistence;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Eshop.WebApi.Controllers
@@ -7,6 +8,11 @@ namespace Eshop.WebApi.Controllers
     [Route("[controller]")]
     public class CategoryController : ControllerBase
     {
+        public CategoryController(EshopDbContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
+
         public static List<Category> Categories = new List<Category>
         {
             new Category(1, "Notebooks", "Lorem ipsum"),
@@ -14,25 +20,27 @@ namespace Eshop.WebApi.Controllers
             new Category(3, "Mice", "Lorem ipsum")
         };
 
+        private readonly EshopDbContext dbContext;
+
         [HttpGet]
         public List<Category> GetCategories()
         {
-            return Categories;
+            return dbContext.Categories.ToList();
         }
 
         [HttpGet("{id}")]
         public Category GetCategory(int id)
         {
-            return Categories.First(x => x.Id == id);
+            return dbContext.Categories.First(x => x.Id == id);
         }
 
         [HttpPost]
         public Category CreateCategory(string title, string description)
         {
-            var newId = Categories.Max(x => x.Id) + 1;
-            var newCategory = new Category(newId, title, description);
+            var newCategory = new Category(0, title, description);
 
-            Categories.Add(newCategory);
+            dbContext.Categories.Add(newCategory);
+            dbContext.SaveChanges();
 
             return newCategory;
         }
@@ -40,15 +48,17 @@ namespace Eshop.WebApi.Controllers
         [HttpDelete("{id}")]
         public void DeleteCategory(int id)
         {
-            var categoryToBeDeleted = Categories.First(x => x.Id == id);
-            Categories.Remove(categoryToBeDeleted);
+            var categoryToBeDeleted = dbContext.Categories.First(x => x.Id == id);
+            dbContext.Categories.Remove(categoryToBeDeleted);
+            dbContext.SaveChanges();
         }
 
         [HttpPut("{id}")]
         public Category UpdateCategory(int id, string title, string description)
         {
-            var categoryToBeUpdated = Categories.First(x => x.Id == id);
+            var categoryToBeUpdated = dbContext.Categories.First(x => x.Id == id);
             categoryToBeUpdated.Update(title, description);
+            dbContext.SaveChanges();
 
             return categoryToBeUpdated;
         }
