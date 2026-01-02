@@ -6,7 +6,7 @@
         {
             if (id < 0)
             {
-                throw new ArgumentOutOfRangeException("id");
+                throw new ArgumentOutOfRangeException(nameof(id));
             }
 
             ValidateParameters(title, description, price, category);
@@ -38,32 +38,32 @@
         {
             if (string.IsNullOrEmpty(title))
             {
-                throw new ArgumentNullException("title");
+                throw new ArgumentNullException(nameof(title));
             }
 
             if (title.Length > 50)
             {
-                throw new ArgumentOutOfRangeException("title");
+                throw new ArgumentOutOfRangeException(nameof(title));
             }
 
             if (string.IsNullOrEmpty(description))
             {
-                throw new ArgumentNullException("description");
+                throw new ArgumentNullException(nameof(description));
             }
 
             if (description.Length > 500)
             {
-                throw new ArgumentOutOfRangeException("description");
+                throw new ArgumentOutOfRangeException(nameof(description));
             }
 
             if (price < 0)
             {
-                throw new ArgumentOutOfRangeException("price");
+                throw new ArgumentOutOfRangeException(nameof(price));
             }
 
             if (category == null)
             {
-                throw new ArgumentNullException("category");
+                throw new ArgumentNullException(nameof(category));
             }
         }
     }
