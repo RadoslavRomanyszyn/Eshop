@@ -1,6 +1,7 @@
 ﻿using Eshop.Domain;
 using Eshop.Persistence;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Eshop.WebApi.Controllers
 {
@@ -8,30 +9,32 @@ namespace Eshop.WebApi.Controllers
     [Route("[controller]")]
     public class CategoryController : ControllerBase
     {
+        private readonly EshopDbContext dbContext;
+
         public CategoryController(EshopDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
 
+        /*
         public static List<Category> Categories = new List<Category>
         {
             new Category(1, "Notebooks", "Lorem ipsum"),
             new Category(2, "Keyboards", "Lorem ipsum"),
             new Category(3, "Mice", "Lorem ipsum")
         };
-
-        private readonly EshopDbContext dbContext;
+        */
 
         [HttpGet]
         public List<Category> GetCategories()
         {
-            return dbContext.Categories.ToList();
+            return dbContext.CategoriesViews.ToList();
         }
 
         [HttpGet("{id}")]
         public Category GetCategory(int id)
         {
-            return dbContext.Categories.First(x => x.Id == id);
+            return dbContext.CategoriesViews.First(x => x.Id == id);
         }
 
         [HttpPost]

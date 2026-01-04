@@ -21,5 +21,5 @@ foreach (var category in categories)
 
 foreach (var product in products)
 {
-    Console.WriteLine($"{product.Title} . {product.Description} . {product.Price} . {product.Category.Title}");
+    Console.WriteLine($"{product.Title} . {product.Description} . {product.Price} . {product.Category?.Title}");
 }
