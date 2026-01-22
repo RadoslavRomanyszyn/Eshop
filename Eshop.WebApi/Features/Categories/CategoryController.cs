@@ -1,9 +1,8 @@
 ﻿using Eshop.Domain;
 using Eshop.Persistence;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
-namespace Eshop.WebApi.Controllers
+namespace Eshop.WebApi.Features.Categories
 {
     [ApiController]
     [Route("[controller]")]
@@ -15,15 +14,6 @@ namespace Eshop.WebApi.Controllers
         {
             this.dbContext = dbContext;
         }
-
-        /*
-        public static List<Category> Categories = new List<Category>
-        {
-            new Category(1, "Notebooks", "Lorem ipsum"),
-            new Category(2, "Keyboards", "Lorem ipsum"),
-            new Category(3, "Mice", "Lorem ipsum")
-        };
-        */
 
         [HttpGet]
         public List<Category> GetCategories()
@@ -38,7 +28,7 @@ namespace Eshop.WebApi.Controllers
         }
 
         [HttpPost]
-        public Category CreateCategory(string title, string description)
+        public Category AddCategory(string title, string description)
         {
             var newCategory = new Category(0, title, description);
 

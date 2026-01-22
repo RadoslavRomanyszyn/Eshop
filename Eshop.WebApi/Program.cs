@@ -1,12 +1,16 @@
 using Eshop.Persistence;
+using Eshop.WebApi.Filters;
+using MediatR.Extensions.FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
+var assembly = typeof(Program).Assembly;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers().AddJsonOptions(options =>
+builder.Services.AddControllers(SetupControllers).AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 });
@@ -22,6 +26,10 @@ builder.Services.AddDbContext<EshopDbContext>(
                       .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information)
                       .EnableSensitiveDataLogging(true)
 );
+
+// MediatR & FluentValidation configuration
+builder.Services.AddFluentValidation([assembly]);
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(assembly));
 
 // CORS configuration
 var devCorsPolicy = "devCorsPolicy";
@@ -48,7 +56,7 @@ static void CreateDbIfNotExist(IHost host)
             var context = services.GetRequiredService<EshopDbContext>();
             context.Database.EnsureCreated();
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             throw;
         }
@@ -70,3 +78,8 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+void SetupControllers(MvcOptions options)
+{
+    options.Filters.Add<GlobalExceptionFilter>();
+}

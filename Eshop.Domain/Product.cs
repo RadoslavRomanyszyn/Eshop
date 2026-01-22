@@ -29,7 +29,7 @@
         public decimal Price { get; private set; }
         public Category? Category { get; private set; }
 
-        public void Update(string title, string description, decimal price, Category category)
+        public void Update(string title, string description, decimal price, Category? category)
         {
             ValidateParameters(title, description, price);
 
