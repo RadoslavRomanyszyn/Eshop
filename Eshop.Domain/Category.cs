@@ -30,7 +30,7 @@
 
         private static void ValidateParameters(string title, string description)
         {
-            if (string.IsNullOrEmpty(title))
+            if (string.IsNullOrEmpty(title?.Trim()))
             {
                 throw new ArgumentNullException(nameof(title));
             }
@@ -40,7 +40,7 @@
                 throw new ArgumentOutOfRangeException(nameof(title));
             }
 
-            if (string.IsNullOrEmpty(description))
+            if (string.IsNullOrEmpty(description?.Trim()))
             {
                 throw new ArgumentNullException(nameof(description));
             }
