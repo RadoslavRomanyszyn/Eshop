@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E5ED8944
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eshop.Domain.Tests", "tests\Eshop.Domain.Tests\Eshop.Domain.Tests.csproj", "{FC2CA23E-433D-47EE-AEED-856A266CAD2C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eshop.WebApi.Tests", "tests\Eshop.WebApi.Tests\Eshop.WebApi.Tests.csproj", "{7A74191E-A8C2-4A4F-B3FF-0281BA85B444}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,12 +49,17 @@ Global
 		{FC2CA23E-433D-47EE-AEED-856A266CAD2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC2CA23E-433D-47EE-AEED-856A266CAD2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC2CA23E-433D-47EE-AEED-856A266CAD2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A74191E-A8C2-4A4F-B3FF-0281BA85B444}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A74191E-A8C2-4A4F-B3FF-0281BA85B444}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A74191E-A8C2-4A4F-B3FF-0281BA85B444}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A74191E-A8C2-4A4F-B3FF-0281BA85B444}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FC2CA23E-433D-47EE-AEED-856A266CAD2C} = {E5ED8944-7023-4FD1-9AE6-80078F0CBA4C}
+		{7A74191E-A8C2-4A4F-B3FF-0281BA85B444} = {E5ED8944-7023-4FD1-9AE6-80078F0CBA4C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {179A8169-2832-4E55-AA33-91F6E23F2BD7}
