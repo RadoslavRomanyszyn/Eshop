@@ -1,3 +1,5 @@
+using Eshop.Domain.Tests.Utils;
+
 namespace Eshop.Domain.Tests
 {
     public class CategoryTests
@@ -7,8 +9,8 @@ namespace Eshop.Domain.Tests
         {
             // arrange
             var id = 1;
-            var title = GenerateRandomString(50);
-            var description = GenerateRandomString(500);
+            var title = StringUtils.GenerateRandomString(50);
+            var description = StringUtils.GenerateRandomString(500);
 
             // act
             var sut = new Category(id, title, description);
@@ -56,7 +58,7 @@ namespace Eshop.Domain.Tests
         {
             // arrange
             var id = 0;
-            var title = GenerateRandomString(51);
+            var title = StringUtils.GenerateRandomString(51);
 
             // act / assert
             Assert.Throws<ArgumentOutOfRangeException>(() => new Category(id, title, null!));
@@ -92,7 +94,7 @@ namespace Eshop.Domain.Tests
             // arrange
             var id = 0;
             var title = "Valid Title";
-            var description = GenerateRandomString(501);
+            var description = StringUtils.GenerateRandomString(501);
 
             // act / assert
             Assert.Throws<ArgumentOutOfRangeException>(() => new Category(id, title, description));
@@ -102,8 +104,8 @@ namespace Eshop.Domain.Tests
         public void CategoryUpdate_WithValidParams_SetsPropertiesCorrectly()
         {
             // arrange
-            var newCategoryTitle = GenerateRandomString(50);
-            var newCategoryDescription = GenerateRandomString(500);
+            var newCategoryTitle = StringUtils.GenerateRandomString(50);
+            var newCategoryDescription = StringUtils.GenerateRandomString(500);
             var category = new Category(0, "Laptop", "Lorem ipsum");
 
             // act
@@ -142,7 +144,7 @@ namespace Eshop.Domain.Tests
         public void CategoryUpdate_WithLongTitleParam_ThrowsException()
         {
             // arrange
-            var newCategoryTitle = GenerateRandomString(51);
+            var newCategoryTitle = StringUtils.GenerateRandomString(51);
             var newCategoryDescription = "New Description";
             var category = new Category(0, "Laptop", "Lorem ipsum");
 
@@ -179,20 +181,11 @@ namespace Eshop.Domain.Tests
         {
             // arrange
             var newCategoryTitle = "New Title";
-            var newCategoryDescription = GenerateRandomString(501);
+            var newCategoryDescription = StringUtils.GenerateRandomString(501);
             var category = new Category(0, "Laptop", "Lorem ipsum");
 
             // act / assert
             Assert.Throws<ArgumentOutOfRangeException>(() => category.Update(newCategoryTitle, newCategoryDescription));
-        }
-
-        static string GenerateRandomString(int length)
-        {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            Random random = new Random();
-
-            return new string(Enumerable.Repeat(chars, length)
-                .Select(s => s[random.Next(s.Length)]).ToArray());
         }
     }
 }

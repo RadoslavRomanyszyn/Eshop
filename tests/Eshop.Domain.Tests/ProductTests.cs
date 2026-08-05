@@ -1,4 +1,6 @@
-﻿namespace Eshop.Domain.Tests
+﻿using Eshop.Domain.Tests.Utils;
+
+namespace Eshop.Domain.Tests
 {
     public class ProductTests
     {
@@ -7,8 +9,8 @@
         {
             // arrange
             var id = 1;
-            var title = GenerateRandomString(50);
-            var description = GenerateRandomString(500);
+            var title = StringUtils.GenerateRandomString(50);
+            var description = StringUtils.GenerateRandomString(500);
             var price = 0.00m;
             var category = new Category(1, "Title", "Description");
 
@@ -60,7 +62,7 @@
         {
             // arrange
             var id = 0;
-            var title = GenerateRandomString(51);
+            var title = StringUtils.GenerateRandomString(51);
 
             // act / assert
             Assert.Throws<ArgumentOutOfRangeException>(() => new Product(id, title, null!, 0, null));
@@ -96,7 +98,7 @@
             // arrange
             var id = 0;
             var title = "Valid Title";
-            var description = GenerateRandomString(501);
+            var description = StringUtils.GenerateRandomString(501);
 
             // act / assert
             Assert.Throws<ArgumentOutOfRangeException>(() => new Product(id, title, description, 0, null));
@@ -135,8 +137,8 @@
         public void ProductUpdate_WithValidParams_SetsPropertiesCorrectly()
         {
             // arrange
-            var newProductTitle = GenerateRandomString(50);
-            var newProductDescription = GenerateRandomString(500);
+            var newProductTitle = StringUtils.GenerateRandomString(50);
+            var newProductDescription = StringUtils.GenerateRandomString(500);
             var newProductPrice = 50.00m;
             var newProductCategory = new Category(0, "Title", "Description");
             var product = new Product(0, "Title", "Description", 0.00m, null);
@@ -183,7 +185,7 @@
         public void ProductUpdate_WithLongTitleParam_ThrowsException()
         {
             // arrange
-            var newProductTitle = GenerateRandomString(51);
+            var newProductTitle = StringUtils.GenerateRandomString(51);
             var newProductDescription = "New Description";
             var newProductPrice = 50.00m;
             var newProductCategory = new Category(0, "Title", "Description");
@@ -226,7 +228,7 @@
         {
             // arrange
             var newProductTitle = "New Title";
-            var newProductDescription = GenerateRandomString(501);
+            var newProductDescription = StringUtils.GenerateRandomString(501);
             var newProductPrice = 50.00m;
             var newProductCategory = new Category(0, "Title", "Description");
             var product = new Product(0, "Title", "Description", 0.00m, null);
@@ -264,15 +266,6 @@
 
             // assert
             Assert.That(product.Category, Is.Null);
-        }
-
-        static string GenerateRandomString(int length)
-        {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            Random random = new Random();
-
-            return new string(Enumerable.Repeat(chars, length)
-                .Select(s => s[random.Next(s.Length)]).ToArray());
         }
     }
 }
