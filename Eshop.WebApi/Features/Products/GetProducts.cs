@@ -20,7 +20,7 @@ namespace Eshop.WebApi.Features.Products
             }
 
             // NOTE: using IEnumerable to have a collection of multiple products=ResponseDto
-            public async Task<IEnumerable<GetProductsResponseDto>> Handle(Query command, CancellationToken cancellationToken)
+            public async Task<IEnumerable<GetProductsResponseDto>> Handle(Query query, CancellationToken cancellationToken)
             {
                 var products = await dbContext.ProductsViews
                     .Include(x => x.Category)
