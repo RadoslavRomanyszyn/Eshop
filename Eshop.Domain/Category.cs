@@ -1,7 +1,14 @@
-﻿namespace Eshop.Domain
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Eshop.Domain
 {
     public class Category
     {
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+        [ExcludeFromCodeCoverage]
+        private Category() { } // private ctor for persistence – Entity Framework
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+
         public Category(int id, string title, string description)
         {
             if (id < 0)

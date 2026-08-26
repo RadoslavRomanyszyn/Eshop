@@ -33,7 +33,7 @@ namespace Eshop.WebApi.Features.Categories
                 var request = command.Request;
                 var category = new Category(0, request.Title, request.Description);
                 
-                var result = await dbContext.Categories.AddAsync(category, cancellationToken);
+                var result = dbContext.Categories.Add(category);
                 
                 await dbContext.SaveChangesAsync(cancellationToken);
                 

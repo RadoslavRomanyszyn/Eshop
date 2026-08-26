@@ -37,7 +37,7 @@ namespace Eshop.WebApi.Features.Products
                 var category = await dbContext.Categories.FirstOrDefaultAsync(x => x.Id == request.CategoryId, cancellationToken);
                 var product = new Product(0, request.Title, request.Description, request.Price, category);
 
-                var result = await dbContext.Products.AddAsync(product, cancellationToken);
+                var result = dbContext.Products.Add(product);
 
                 await dbContext.SaveChangesAsync(cancellationToken);
 
