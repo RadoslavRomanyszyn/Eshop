@@ -3,12 +3,23 @@
     {
       "Id": 1,
       "Title": "Product 1",
-      "Description": "Description 1",
-      "Price": 10.0,
+      "Description": "Product Description 1",
+      "Price": 10.99,
       "Category": {
         "Id": 1,
         "Title": "Category 1",
-        "Description": "Description 1"
+        "Description": "Category Description 1"
+      }
+    },
+    {
+      "Id": 2,
+      "Title": "Product 2",
+      "Description": "Product Description 2",
+      "Price": 20.99,
+      "Category": {
+        "Id": 2,
+        "Title": "Category 2",
+        "Description": "Category Description 2"
       }
     }
   ]

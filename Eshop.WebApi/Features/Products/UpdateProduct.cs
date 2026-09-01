@@ -19,7 +19,7 @@ namespace Eshop.WebApi.Features.Products
                 RuleFor(x => x.Request.Title).NotEmpty().MaximumLength(50);
                 RuleFor(x => x.Request.Description).NotEmpty().MaximumLength(500);
                 RuleFor(x => x.Request.Price).GreaterThanOrEqualTo(0);
-                // NOTE: CategoryId is optional so no validation rule for it
+                RuleFor(x => x.Request.CategoryId).Must(id => id is null || id > 0);
             }
         }
 
@@ -41,7 +41,17 @@ namespace Eshop.WebApi.Features.Products
                 }
 
                 var request = command.Request;
-                var category = await dbContext.Categories.FirstOrDefaultAsync(x => x.Id == request.CategoryId, cancellationToken);
+
+                Category? category = null;
+                if (request.CategoryId is not null)
+                {
+                    category = await dbContext.Categories.FirstOrDefaultAsync(x => x.Id == request.CategoryId, cancellationToken);
+                    if (category is null)
+                    {
+                        throw new NotFoundException($"Category with Id {request.CategoryId} was not found.");
+                    }
+                }
+
                 product.Update(request.Title, request.Description, request.Price, category);
 
                 await dbContext.SaveChangesAsync(cancellationToken);

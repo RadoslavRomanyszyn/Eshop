@@ -1,5 +1,5 @@
-﻿using Eshop.Domain.Tests.Mocks;
-using Eshop.Domain.Tests.Utils;
+﻿using Eshop.Tests.Common.Mocks;
+using Eshop.Tests.Common.Utils;
 
 namespace Eshop.Domain.Tests
 {

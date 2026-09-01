@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Eshop.Domain\Eshop.Domain.csproj" />
+    <ProjectReference Include="..\Eshop.Tests.Common\Eshop.Tests.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>

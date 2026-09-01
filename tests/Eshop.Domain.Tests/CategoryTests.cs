@@ -1,4 +1,4 @@
-using Eshop.Domain.Tests.Utils;
+﻿using Eshop.Tests.Common.Utils;
 
 namespace Eshop.Domain.Tests
 {

@@ -1,4 +1,4 @@
-﻿using Eshop.Domain.Tests.Mocks;
+﻿using Eshop.Tests.Common.Mocks;
 
 namespace Eshop.Domain.Tests
 {
