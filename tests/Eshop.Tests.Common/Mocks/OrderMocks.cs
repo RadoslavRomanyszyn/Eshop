@@ -1,4 +1,6 @@
-﻿namespace Eshop.Domain.Tests.Mocks
+﻿using Eshop.Domain;
+
+namespace Eshop.Tests.Common.Mocks
 {
     public static class OrderMocks
     {

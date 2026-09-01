@@ -1,0 +1,11 @@
+{
+  "Id": 1,
+  "Title": "Updated Product",
+  "Description": "Updated Description",
+  "Price": 200.0,
+  "Category": {
+    "Id": 2,
+    "Title": "Category 2",
+    "Description": "Category Description 2"
+  }
+}
